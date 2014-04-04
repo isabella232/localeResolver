@@ -30,9 +30,9 @@ describe('Locale Factory tests', function () {
 
 
     it('should create LocaleFactory something', function (done) {
-        localeFactorySingleton = new LocaleFactory( path.resolve(__dirname, '../resources/BCP47LocaleMapping.json'),
-            path.resolve(__dirname, '../resources/CountryTimeZoneMapping.json'),
-            path.resolve(__dirname, '../resources/SupportedLanguageMapping.json') );
+        localeFactorySingleton = new LocaleFactory( path.resolve(__dirname, '../example/resources/BCP47LocaleMapping.json'),
+            path.resolve(__dirname, '../example/resources/CountryTimeZoneMapping.json'),
+            path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json') );
         assert(localeFactorySingleton);
         done();
     });

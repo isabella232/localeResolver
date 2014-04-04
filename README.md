@@ -7,10 +7,10 @@ The resources directory contains examples of the files and their formats expecte
 
 Here is an example of creating the locale factory with those files:
 ```javascript
-localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../resources/BCP47LocaleMapping.json'),
-    path.resolve(__dirname, '../resources/CountryTimeZoneMapping.json'),
-    path.resolve(__dirname, '../resources/SupportedLanguageMapping.json'),
-    path.resolve(__dirname, '../resources/g11nProperties.json') );
+localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../example/resources/BCP47LocaleMapping.json'),
+    path.resolve(__dirname, '../example/resources/CountryTimeZoneMapping.json'),
+    path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json'),
+    path.resolve(__dirname, '../example/resources/g11nProperties.json') );
 
 
 ```
@@ -55,7 +55,7 @@ have the populateFactors function defined:
 
 
 ```
-Default locale rules is located in resources/localeResolution.nools and uses the following properties:
+Default locale rules is located in example/resources/localeResolution.nools and uses the following properties:
 
 
 - If user is signed-in, user preferred country and language

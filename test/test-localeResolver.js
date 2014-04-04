@@ -45,10 +45,10 @@ describe('test-localeResolver', function () {
             console.dir(info);
         });
 
-        localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../resources/BCP47LocaleMapping.json'),
-            path.resolve(__dirname, '../resources/CountryTimeZoneMapping.json'),
-            path.resolve(__dirname, '../resources/SupportedLanguageMapping.json'),
-            path.resolve(__dirname, '../resources/g11nProperties.json') );
+        localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../example/resources/BCP47LocaleMapping.json'),
+            path.resolve(__dirname, '../example/resources/CountryTimeZoneMapping.json'),
+            path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json'),
+            path.resolve(__dirname, '../example/resources/g11nProperties.json') );
 
         app.all(appPath, userMiddleware(), localeResolver.requestHandler(localeFactory), renderMiddlewareHandler() );
 
