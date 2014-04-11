@@ -39,15 +39,23 @@ describe('test-localeResolver with alternate rules and alternate locale factors'
         app.use( session({ secret: 'keyboard cat', key: 'guesswho', cookie: { secure: false, maxAge: 60000 }}) );
 
 
-        localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../resources/BCP47LocaleMapping.json'),
-            path.resolve(__dirname, '../resources/CountryTimeZoneMapping.json'),
-            path.resolve(__dirname, '../resources/SupportedLanguageMapping.json'),
-            path.resolve(__dirname, '../resources/g11nProperties.json') );
+        var localeFactoryOptions = [];
+        localeFactoryOptions.push(  path.resolve(__dirname, '../example/resources/BCP47LocaleMapping.json') );
+        localeFactoryOptions.push(  path.resolve(__dirname, '../example/resources/CountryTimeZoneMapping.json') );
+        localeFactoryOptions.push(  path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json') );
+        localeFactoryOptions.push(  path.resolve(__dirname, '../example/resources/g11nProperties.json') );
+
+        console.log(localeFactoryOptions);
+
+//        localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../example/resources/BCP47LocaleMapping.json'),
+//            path.resolve(__dirname, '../example/resources/CountryTimeZoneMapping.json'),
+//            path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json'),
+//            path.resolve(__dirname, '../example/resources/g11nProperties.json') );
 
         var alternateRulesFile = path.resolve(__dirname, './alternateRules.nools');
         var alternateLocaleFactorFile = path.resolve(__dirname, './alternateLocaleFactors');
 
-        app.all(appPath, userMiddleware(), localeResolver.requestHandler(localeFactory,
+        app.all(appPath, userMiddleware(), localeResolver.requestHandler(localeFactoryOptions,
             {ruleFile: alternateRulesFile, localeFactorsModule: alternateLocaleFactorFile} ),
             renderMiddlewareHandler() );
 
