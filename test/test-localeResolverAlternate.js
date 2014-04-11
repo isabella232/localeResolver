@@ -45,12 +45,6 @@ describe('test-localeResolver with alternate rules and alternate locale factors'
         localeFactoryOptions.push(  path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json') );
         localeFactoryOptions.push(  path.resolve(__dirname, '../example/resources/g11nProperties.json') );
 
-        console.log(localeFactoryOptions);
-
-//        localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../example/resources/BCP47LocaleMapping.json'),
-//            path.resolve(__dirname, '../example/resources/CountryTimeZoneMapping.json'),
-//            path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json'),
-//            path.resolve(__dirname, '../example/resources/g11nProperties.json') );
 
         var alternateRulesFile = path.resolve(__dirname, './alternateRules.nools');
         var alternateLocaleFactorFile = path.resolve(__dirname, './alternateLocaleFactors');
