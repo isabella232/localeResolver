@@ -10,8 +10,7 @@ Here is an example of creating the locale factory with those files:
 localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../example/resources/BCP47LocaleMapping.json'),
     path.resolve(__dirname, '../example/resources/CountryTimeZoneMapping.json'),
     path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json'),
-    path.resolve(__dirname, '../example/resources/g11nProperties.json') );
-
+    path.resolve(__dirname, '../example/resources/g11nProperties.json') );  OR
 
 ```
 and then passing in the locale factory to the locale resolver middleware for your app:
@@ -20,11 +19,29 @@ and then passing in the locale factory to the locale resolver middleware for you
 app.all(appPath, userMiddleware(), localeResolver.requestHandler(localeFactory), renderMiddlewareHandler() );
 
 ```
+Please note that the format of the configuration files (BCP47LocaleMapping.json, CountryTimeZoneMapping.json,
+SupportedLanguageMapping.json, and g11nProperties.json) used to construct the locale factory must be adhered to.
+
 You can use the localeResolver directly as middleware or wrap the call to localeResolver in additional middleware.
 
-After the locale resolver middleware executes,  the response.locals object will have a locale object attached.
+After the locale resolver middleware executes,  the response.locals object will have a locale object attached:
+
+```javascript
+res.locals.locale = { bcp47Locale: 'es-ES-x-ES',
+                      countryCode: 'ES',
+                      language: 'es-ES',
+                      locale: 'es_ES',
+                      cldrLocale: 'es-ES',
+                      supportedLanguages: [ 'es-ES', 'en-US' ],
+                      timeZones:
+                          [ 'Africa/Ceuta',
+                            'Atlantic/Canary',
+                            'Europe/Madrid',
+                            'Europe/Berlin' ],
+                      primaryTimeZone: 'Europe/Madrid' }
 
 
+```
 The locale resolver passes in a locale factors object and set of rules to the rule engine.  The default rules and
 locale factors object function expect that if there is a logged in user then the request object has a user object
 attached with the following attributes set:
