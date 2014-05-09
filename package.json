@@ -1,6 +1,6 @@
 {
-  "name": "localeResolver",
-  "version": "0.1.0",
+  "name": "localeresolver",
+  "version": "0.1.1",
   "description": "locale resolution for base on configurable rules effort",
   "author": "johnraber",
   "main": "index.js",

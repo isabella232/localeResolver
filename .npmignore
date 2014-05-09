@@ -1,9 +1,7 @@
 .idea
 .settings
 logs
-example/*
 *.log
 report
 coverage
 results-*
-test/*
