@@ -1,3 +1,10 @@
+localeresolver
+==============
+
+Lead Maintainer: [Aria Stewart](https://github.com/aredridel)  
+
+[![Build Status](https://travis-ci.org/krakenjs/localeResolver.svg)](https://travis-ci.org/krakenjs/localeResolver)
+
 This module contains a locale resolver which is designed as middleware to be used with Express.  Locale resolver uses
 a popular open source rules engine called Nools (JS) / Drools (Java ).
 
