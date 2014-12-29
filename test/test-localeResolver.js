@@ -12,7 +12,6 @@
      request = require("supertest"),
      localeFactors = require('../lib/localeFactors'),
      localeResolver = require('../lib/localeResolver'),
-     memwatch = require('memwatch'),
      renderMiddlewareHandler = require('./renderMiddlewareHandler').requestHandler,
      userMiddleware = require('./userMiddleware').requestHandler,
      G11nLocaleFactory = require('../lib/g11nLocaleFactory');
@@ -39,12 +38,6 @@ describe('test-localeResolver', function () {
         app.use( cookieParser() );
         app.use( session({ secret: 'keyboard cat', key: 'guesswho', cookie: { secure: false, maxAge: 60000 }}) );
 
-
-        memwatch.on('leak', function(info) {
-            console.log('>>>>>>>>>>>>>>>>   leaking memory!');
-            console.dir(info);
-        });
-
         localeFactory = new G11nLocaleFactory( path.resolve(__dirname, '../example/resources/BCP47LocaleMapping.json'),
             path.resolve(__dirname, '../example/resources/CountryTimeZoneMapping.json'),
             path.resolve(__dirname, '../example/resources/SupportedLanguageMapping.json'),
@@ -53,16 +46,10 @@ describe('test-localeResolver', function () {
         app.all(appPath, userMiddleware(), localeResolver.requestHandler(localeFactory), renderMiddlewareHandler() );
 
 
-        hd = new memwatch.HeapDiff();
-
         server = app.listen(3000, done);
     });
 
     after(function(done) {
-
-        var diff = hd.end();
-        console.log('diff:  ', diff.change.size );
-
         server.close(done);
     });
 
