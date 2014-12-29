@@ -4,12 +4,12 @@
 
  var assert = require('assert'),
      path = require('path'),
-     express = require("express"),
+     express = require('express'),
      connect = require('connect'),
-     bodyParser = require("body-parser"),
-     cookieParser = require("cookie-parser"),
-     session = require("express-session"),
-     request = require("supertest"),
+     bodyParser = require('body-parser'),
+     cookieParser = require('cookie-parser'),
+     session = require('express-session'),
+     request = require('supertest'),
      localeFactors = require('../lib/localeFactors'),
      localeResolver = require('../lib/localeResolver'),
      renderMiddlewareHandler = require('./renderMiddlewareHandler').requestHandler,
@@ -19,18 +19,14 @@
 
 describe('test-localeResolver', function () {
 
-    var hd,
-        app,
+    var app,
         server,
-        cookie,
-        appPath = "/resolveMyLocale",
+        appPath = '/resolveMyLocale',
         localeFactory;
-
 
     var hdrs = {  'Accept':  'application/json' };
 
     var model = {};
-
 
     before(function(done) {
         app = express();
@@ -45,7 +41,6 @@ describe('test-localeResolver', function () {
 
         app.all(appPath, userMiddleware(), localeResolver.requestHandler(localeFactory), renderMiddlewareHandler() );
 
-
         server = app.listen(3000, done);
     });
 
@@ -53,20 +48,10 @@ describe('test-localeResolver', function () {
         server.close(done);
     });
 
-
-    beforeEach(function () {
-    });
-
-
-    afterEach(function () {
-    });
-
-
-    // loggedInUserAndLangUrlQueryParam
     it('should fire loggedInUserAndLangUrlQueryParam rule', function (done) {
 
         model.user = { name: 'ralph', preferredCountry: 'US', preferredLang: 'es-US' };
-        model.lang = 'en-US'
+        model.lang = 'en-US';
 
         request(app).post(appPath).set(hdrs).send(model).end(function(err, response) {
 
