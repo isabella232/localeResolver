@@ -5,7 +5,7 @@
   "author": "johnraber",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "mocha test"
   },
   "engines": {
     "node": ">=0.10.0"
