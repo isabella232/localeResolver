@@ -1,7 +1,4 @@
-localeresolver
-==============
-
-Lead Maintainer: [Aria Stewart](https://github.com/aredridel)  
+# localeresolver
 
 [![Build Status](https://travis-ci.org/krakenjs/localeResolver.svg)](https://travis-ci.org/krakenjs/localeResolver)
 
@@ -86,6 +83,3 @@ Default locale rules is located in example/resources/localeResolution.nools and 
 - 'country' and/or 'lang' URL params http://<your host:port/your applicaton>?country=DE&lang=de_DE
 - lang query param can be passed in as BCP47 format.
 - browser 'accept-language' header
-
-
-
